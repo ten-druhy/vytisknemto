@@ -6,9 +6,10 @@ const fullPath =
     ? route.params.page
     : route.params.page.join("/");
 
+const config = useRuntimeConfig()
 const story = await useAsyncStoryblok(
   fullPath,
-  { version: "draft" },
+  { version: config.public.useDrafts ? "draft" : "published", },
   { customParent: "https://app.storyblok.com" }
 );
 </script>

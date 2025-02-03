@@ -13,9 +13,10 @@
 
 <script setup>
 defineProps({ blok: Object });
+const config = useRuntimeConfig()
 const api = useStoryblokApi();
 const stories = await useAsyncData(()=>api.getStories({
     by_slugs: "products/*",
-    version: "draft",
+    version: config.public.useDrafts ? "draft" : "published",
   }).then(res=>res.data.stories))
 </script>
