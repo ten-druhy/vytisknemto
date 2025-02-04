@@ -15,8 +15,5 @@ const story = await useAsyncStoryblok(
 </script>
 
 <template>
-  <UContainer>
-  <PageHeader class="mb-2"></PageHeader>
     <StoryblokComponent v-if="story" :blok="story.content" />
-  </UContainer>
 </template>
