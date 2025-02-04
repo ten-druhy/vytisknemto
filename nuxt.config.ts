@@ -15,6 +15,6 @@ export default defineNuxtConfig({
         }
       },
     ],
-    '@nuxtjs/tailwindcss',
+    '@nuxt/ui'
   ]
 })

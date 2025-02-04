@@ -1,8 +1,5 @@
 <template>
-  <div class="flex shadow">
-    <div class="spacer"></div>
-    <NuxtLink :to="story.full_slug" v-for="story of stories.data.value" class="mx-2 my-1">{{ story.content.displayName }}</NuxtLink>
-  </div>
+  <UHorizontalNavigation :links="links"></UHorizontalNavigation>
 </template>
 
 <script lang="ts" setup>
@@ -13,10 +10,8 @@ const stories = await useAsyncData(()=>api.getStories({
     version: config.public.useDrafts ? "draft" : "published",
     sort_by: "sort_by_date",
   }).then(res=>res.data.stories))
+const links = [[],stories.data.value?.map(el=>{return {label:el.content.displayName, to:el.full_slug}})?? []]
 </script>
 
 <style>
-.spacer{
-  flex: 1 1 auto
-}
 </style>
