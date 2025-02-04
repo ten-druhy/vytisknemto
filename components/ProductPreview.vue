@@ -1,12 +1,16 @@
 <template>
-  <div
-    class="w-full p-12 bg-[#f7f6fd] rounded-[5px] text-center shadow"
-    v-editable="product"
-  >
-    <NuxtLink :to="product.full_slug">{{ product.name }}</NuxtLink>
-    <div>{{ product.content.name }}</div>
-    <div>{{ product.content.price }}</div>
-  </div>
+  <NuxtLink :to="product.full_slug">
+    <UCard>
+      <USkeleton class="h-32 w-32" />
+  
+      <template #footer>
+        <div class="">
+          <div>{{ product.name }}</div>
+          <div>{{ product.content.price }}</div>
+        </div>
+      </template>
+    </UCard>
+  </NuxtLink>
 </template>
 
 <script lang="ts" setup>
