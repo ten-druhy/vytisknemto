@@ -1,12 +1,31 @@
-<script setup>
-const props = defineProps({ blok: Object });
+<script setup lang="ts">
+const props = defineProps<{blok:any}>();
 const desc = computed(() => renderRichText(props.blok.description));
 const customText = ref("Můj text");
+
+const replaceKeys = (src?:string)=>{
+  if(src === "") return
+  const res = src?.replace("{{name}}", props.blok.name).replace("{{price}}", props.blok.price)
+  return res
+}
+
+useSeoMeta({
+  title: replaceKeys(props.blok.og_title),
+  description: replaceKeys(props.blok.og_description),
+  ogTitle: replaceKeys(props.blok.og_title),
+  ogDescription: replaceKeys(props.blok.og_description),
+  ogImage: props.blok.og_image_url?.filename,
+  // ogUrl: '[og:url]',
+  // twitterTitle: '[twitter:title]',
+  // twitterDescription: '[twitter:description]',
+  // twitterImage: '[twitter:image]',
+  // twitterCard: 'summary'
+})
 </script>
 <template>
   <div class="flex">
     <div>
-      <div style="background-color: black; width: 300px; height: 300px"></div>
+      <USkeleton class="h-64 w-64" />
     </div>
     <div>
       <h2>{{ props.blok.name }}</h2>

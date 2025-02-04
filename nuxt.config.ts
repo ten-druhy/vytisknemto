@@ -6,6 +6,8 @@ export default defineNuxtConfig({
   },
   css: ['@/assets/css/roboto.css'],
   modules: [
+    '@nuxt/ui',
+    "@nuxtjs/color-mode",
     [
       '@storyblok/nuxt',
       {
@@ -15,6 +17,5 @@ export default defineNuxtConfig({
         }
       },
     ],
-    '@nuxt/ui'
   ]
 })
