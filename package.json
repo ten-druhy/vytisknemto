@@ -12,6 +12,7 @@
     "startCommand": "npm run stackblitz"
   },
   "devDependencies": {
+    "@nuxt/image": "^1.10.0",
     "@nuxt/ui": "^2.21.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@storyblok/nuxt": "^6.0.4",
