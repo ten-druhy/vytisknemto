@@ -4,7 +4,7 @@
       <UContainer>
         <div class="flex gap-4 flex-wrap md:flex-nowrap">
           <div class="flex flex-col justify-between flex-1/2">
-            <h1>Zakázkový <span class="text-(--ui-primary)">3D tisk</span> a modelování pro každého</h1>
+            <h1>Zakázkový <span class="text-(--ui-primary) font-bold">3D tisk</span> a modelování pro každého</h1>
             <p>Transformujeme Vaše nápady do reality</p>
             <div>
               <UButton trailing-icon="i-lucide-arrow-right" class="px-4 py-2">Kontaktujte nás</UButton>
