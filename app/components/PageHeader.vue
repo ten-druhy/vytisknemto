@@ -1,7 +1,8 @@
 <template>
   <header class="bg-(--ui-bg-accented)/45 backdrop-blur -mb-px sticky top-0 z-50 border-gray-200 dark:border-gray-800">
     <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between gap-3 h-14">
-      <ULink class="lg:flex-1 flex items-center gap-1.5" to="/">
+      <ULink class="lg:flex-1 flex items-center gap-1.5" to="/"
+        inactive-class="text-(--ui-primary)/65 hover:text-(--ui-primary)">
         <NuxtImg src="/logo.png" alt="Logo" width="45" />
         <h1>Vytisknem.to</h1>
       </ULink>
