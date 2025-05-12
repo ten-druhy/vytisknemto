@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@theme static {
+  --font-sans: 'Arial Narrow', Arial, sans-serif;
+
+  --color-pumpkin-50: #fff4ed;
+--color-pumpkin-100: #ffe6d5;
+--color-pumpkin-200: #feccaa;
+--color-pumpkin-300: #fdac74;
+--color-pumpkin-400: #fb8a3c;
+--color-pumpkin-500: #f97316;
+--color-pumpkin-600: #ea670c;
+--color-pumpkin-700: #c2570c;
+--color-pumpkin-800: #9a4a12;
+--color-pumpkin-900: #7c3d12;
+--color-pumpkin-950: #432007;
+
+
+}
+.dark {
+  /* --ui-primary: var(--ui-color-primary-500); */
+  /* --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500); */
+
+  /* --ui-bg: var(--ui-color-neutral-900); */
+}
+h1 {
+  font-size: xx-large;
+}
+h2 {
+  font-size: x-large;
+}
+h3 {
+  font-size: larger;
+  color: var(--ui-primary);
+}
