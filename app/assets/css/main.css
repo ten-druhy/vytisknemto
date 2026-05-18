@@ -1,54 +1,26 @@
-@import 'tailwindcss';
-@import '@nuxt/ui';
+@import "tailwindcss";
+@import "@nuxt/ui";
 
-@font-face {
-  font-family: 'Swiss 721';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Swiss 721'), url('https://fonts.cdnfonts.com/s/14236/Swiss721Bold.woff') format('woff');
-}
-@font-face {
-  font-family: 'Swiss 721';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Swiss 721'), url('https://fonts.cdnfonts.com/s/14236/Swiss721Black.woff') format('woff');
-}
+@source "../../../content/**/*";
 
+@source inline("translate-x-");
 
 @theme static {
-  --font-sans: 'Swiss 721';
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --color-pumpkin-50: #fff4ed;
-  --color-pumpkin-100: #ffe6d5;
-  --color-pumpkin-200: #feccaa;
-  --color-pumpkin-300: #fdac74;
-  --color-pumpkin-400: #fb8a3c;
-  --color-pumpkin-500: #f97316;
-  --color-pumpkin-600: #ea670c;
-  --color-pumpkin-700: #c2570c;
-  --color-pumpkin-800: #9a4a12;
-  --color-pumpkin-900: #7c3d12;
-  --color-pumpkin-950: #432007;
+  --animate-shimmer: shimmer 8s ease-in-out infinite alternate;
 
-
+  @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
 }
+
 .dark {
-  --ui-primary: var(--ui-color-primary-500);
-  /* --ui-secondary: var(--ui-color-secondary-500);
-  --ui-success: var(--ui-color-success-500);
-  --ui-info: var(--ui-color-info-500);
-  --ui-warning: var(--ui-color-warning-500);
-  --ui-error: var(--ui-color-error-500); */
-
-  /* --ui-bg: var(--ui-color-neutral-900); */
-}
-h1 {
-  font-size: xx-large;
-}
-h2 {
-  font-size: x-large;
-}
-h3 {
-  font-size: larger;
-  color: var(--ui-primary);
+  --ui-bg: var(--ui-color-neutral-950);
+  --ui-bg-muted: var(--ui-color-neutral-900);
+  --ui-bg-elevated: var(--ui-color-neutral-900);
+  --ui-bg-accented: var(--ui-color-neutral-800);
+  --ui-border: var(--ui-color-neutral-900);
 }

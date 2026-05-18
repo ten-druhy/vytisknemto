@@ -1,0 +1,47 @@
+- title: Figurka draka
+  image: /prints/sample-dragon.jpg
+  imageAlt: Detailní 3D tisk draka z resin materiálu
+  category: figurky
+  material: Resin
+  featured: true
+  order: 1
+
+- title: Průmyslový prototyp
+  image: /prints/sample-prototype.jpg
+  imageAlt: Technický prototyp dílu vytisknutý z PETG
+  category: prototypy
+  material: PETG
+  featured: true
+  order: 2
+
+- title: Náhradní díl kávovaru
+  image: /prints/sample-part.jpg
+  imageAlt: Náhradní plastový díl kávovaru
+  category: nahradni-dily
+  material: PETG
+  featured: false
+  order: 3
+
+- title: Geometrická váza
+  image: /prints/sample-vase.jpg
+  imageAlt: Dekorativní geometrická váza z PLA
+  category: dekorace
+  material: PLA
+  featured: true
+  order: 4
+
+- title: Organizér do kuchyně
+  image: /prints/sample-organizer.jpg
+  imageAlt: Modulární organizér do kuchyňské zásuvky
+  category: dekorace
+  material: PLA
+  featured: false
+  order: 5
+
+- title: Miniatura hradu
+  image: /prints/sample-castle.jpg
+  imageAlt: Detailní miniatura středověkého hradu
+  category: figurky
+  material: Resin
+  featured: true
+  order: 6

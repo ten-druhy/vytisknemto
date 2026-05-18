@@ -1,0 +1,18 @@
+navLinks:
+  - label: Služby
+    to: /sluzby
+  - label: Jak to funguje
+    to: /jak-to-funguje
+  - label: Galerie
+    to: /galerie
+  - label: Ceník
+    to: /cenik
+  - label: Blog
+    to: /blog
+  - label: O nás
+    to: /o-nas
+ctaButton:
+  label: Poptávka
+  to: /kontakt
+  icon: i-lucide-mail
+ctaMobileLabel: Nezávazná poptávka

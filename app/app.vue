@@ -1,35 +1,71 @@
-<template>
-  <UApp>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </UApp>
-</template>
 <script setup lang="ts">
-const url = useRequestURL();
-const route = useRoute()
-useSeoMeta({
-  title: "vytisknem.to s.r.o",
-  description: "Zakázkový 3D tisk a modelování",
-  ogTitle: 'vytisknem.to s.r.o',
-  ogDescription: 'Zakázkový 3D tisk a modelování',
-  ogImage: `${url.protocol}//${url.host}/splash/consulting_1.jpg`,
-  ogUrl: `${url.protocol}//${url.host}${route.path}`,
-  twitterTitle: 'vytisknem.to s.r.o',
-  twitterDescription: 'Zakázkový 3D tisk a modelování',
-  twitterImage: `${url.protocol}//${url.host}/splash/consulting_1.jpg`,
-  twitterCard: 'summary_large_image',
-  ogType: "website"
-})
+const colorMode = useColorMode()
+
+const { data: nav } = await useAsyncData('navigation', () =>
+  queryCollection('navigation').first()
+)
+const { data: footer } = await useAsyncData('footer', () =>
+  queryCollection('footer').first()
+)
+
+provide('nav', nav)
+provide('footer', footer)
+
+const color = computed(() => colorMode.value === 'dark' ? '#09090b' : 'white')
+
 useHead({
-  htmlAttrs: {
-    lang: "CS-cz"
-  },
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { key: 'theme-color', name: 'theme-color', content: color }
+  ],
   link: [
-    { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
-    { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
-    { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
-    { rel: "manifest", href: "/site.webmanifest" }
-  ]
+    { rel: 'icon', href: '/favicon.ico' }
+  ],
+  htmlAttrs: {
+    lang: 'cs'
+  },
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      '@id': 'https://vytisknem.to/#business',
+      'name': 'vytisknem.to',
+      'url': 'https://vytisknem.to',
+      'description': 'Profesionální 3D tisk a 3D modelování na míru.',
+      'email': 'info@vytisknem.to',
+      'currenciesAccepted': 'CZK',
+      'paymentAccepted': 'Hotovost, Platební karta, Bankovní převod',
+      'areaServed': { '@type': 'Country', 'name': 'Česká republika' },
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Praha',
+        'addressCountry': 'CZ'
+      },
+      'openingHoursSpecification': [{
+        '@type': 'OpeningHoursSpecification',
+        'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        'opens': '09:00',
+        'closes': '18:00'
+      }]
+    })
+  }]
+})
+
+useSeoMeta({
+  // ogImage: 'https://vytisknem.to/og-default.png',
+  twitterCard: 'summary_large_image'
 })
 </script>
+
+<template>
+  <UApp :toaster="{ expand: false }">
+    <AppHeader />
+
+    <UMain>
+      <NuxtPage />
+    </UMain>
+
+    <AppFooter />
+  </UApp>
+</template>

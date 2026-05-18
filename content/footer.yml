@@ -1,0 +1,36 @@
+tagline: Profesionální 3D tisk a modelování na míru. Česká výroba.
+columns:
+  - label: Služby
+    links:
+      - label: 3D Tisk
+        to: /sluzby#tisk
+      - label: 3D Modelování
+        to: /sluzby#modelovani
+      - label: Materiály
+        to: /sluzby#materialy
+      - label: Ceník
+        to: /cenik
+  - label: Informace
+    links:
+      - label: Jak to funguje
+        to: /jak-to-funguje
+      - label: Galerie
+        to: /galerie
+      - label: Blog
+        to: /blog
+      - label: FAQ
+        to: /faq
+  - label: Kontakt
+    links:
+      - label: Napsat nám
+        to: /kontakt
+      - label: O nás
+        to: /o-nas
+      - label: info@vytisknem.to
+        to: mailto:info@vytisknem.to
+copyrightSuffix: "— Česká výroba"
+legalLinks:
+  - label: GDPR
+    to: "#"
+  - label: Ochrana soukromí
+    to: "#"

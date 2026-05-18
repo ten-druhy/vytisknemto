@@ -1,87 +1,126 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { defineOrganization } from 'nuxt-schema-org/schema'
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-
   modules: [
-    '@nuxt/ui',
     '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@nuxt/icon',
+    '@nuxt/content',
+    '@nuxt/ui',
     '@nuxt/image',
-    '@storyblok/nuxt',
-    'nuxt-schema-org',
-    '@nuxtjs/robots',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/turnstile',
-    'nuxt-nodemailer',
-    '@nuxtjs/device',
+    '@nuxtjs/seo',
+    '@vueuse/nuxt',
+    'motion-v/nuxt',
+    'nuxt-studio'
   ],
 
-  css: ['~/assets/css/main.css'],
-  turnstile: {
-    siteKey: "1x00000000000000000000AA",
-    addValidateEndpoint: true
-  },
-  runtimeConfig: {
-    public: {
-      useDrafts: "true",
-    },
-    turnstile: {
-      secretKey: "2x0000000000000000000000000000000AA"
+  devtools: { enabled: true },
+
+  app: {
+    head: {
+      htmlAttrs: { lang: 'cs' },
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      titleTemplate: '%s — vytisknem.to',
+      meta: [
+        { name: 'theme-color', content: '#09090b' },
+        { name: 'format-detection', content: 'telephone=no' }
+      ],
+      link: [
+        { rel: 'icon', href: '/favicon.ico' },
+        { rel: 'alternate', hreflang: 'cs', href: 'https://vytisknem.to' },
+        {
+          rel: 'alternate',
+          hreflang: 'x-default',
+          href: 'https://vytisknem.to'
+        }
+      ]
     }
   },
-  robots: {
-    blockNonSeoBots: true,
-  },
-  sitemap: {
-    sources: [
-      "/api/__sitemap__/galeries"
-    ]
+
+  css: ['~/assets/css/main.css'],
+
+  site: {
+    url: 'https://vytisknem.to',
+    name: 'vytisknem.to',
+    description:
+      'Profesionální 3D tisk a 3D modelování na míru. Pošlete nám svou představu — my ji vytiskneme.',
+    defaultLocale: 'cs',
+    indexable: true
   },
 
-  nodemailer: {
-    from: '"Client Consult Web" <noreply@web.app>',
-    service: "gmail",
-    auth: {
-      user: "",
-      pass: ""
-    },
-  },
-  future: {
-    compatibilityVersion: 4
-  },
-  colorMode: {
-    storage: "cookie",
-    preference: "system",
-    fallback: "light"
+  mdc: {
+    highlight: {
+      noApiRoute: false,
+      theme: 'github-dark'
+    }
   },
 
-  storyblok: {
-    accessToken: process.env.STORYBLOK_TOKEN,
+  routeRules: {
+    '/': { prerender: false },
+    '/sluzby': { prerender: false },
+    '/jak-to-funguje': { prerender: false },
+    '/cenik': { prerender: false },
+    '/o-nas': { prerender: false },
+    '/faq': { prerender: false },
+    '/galerie': { swr: 3600 },
+    '/blog': { swr: 3600 },
+    '/blog/**': { swr: 86400 },
+    '/kontakt': { ssr: true },
+    '/shop/**': { redirect: '/kontakt' }
+  },
+
+  compatibilityDate: '2025-01-15',
+
+  nitro: {
+    preset: 'vercel',
+    compressPublicAssets: true,
+    prerender: {
+      routes: ['/']
+    }
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: []
+    }
+  },
+
+  typescript: {
+    strict: true,
+    typeCheck: false
+  },
+
+  eslint: {
+    config: {
+      stylistic: {
+        commaDangle: 'never',
+        braceStyle: '1tbs'
+      }
+    }
   },
 
   image: {
-
-    storyblok: {
-      baseURL: 'https://a.storyblok.com'
+    format: ['webp', 'avif'],
+    quality: 82,
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536
     }
   },
-  schemaOrg: {
-    identity: defineOrganization({
-      name: 'Client Consult s.r.o.',
-      logo: "/logo.png",
-      image: [],
-      address: {
-        addressCountry: "CZ",
-        addressLocality: "Praha",
-        postalCode: "130 00",
-        streetAddress: "Táboritská 880/14",
-        addressRegion: "Praha 3",
-      },
-      sameAs: ["https://www.facebook.com/clientconsultsro/",]
-    })
 
+  robots: {
+    disallow: ['/shop/kosik']
   },
-  compatibilityDate: '2024-11-27'
+
+  sitemap: {}
+  // studio: {
+  //   repository: {
+  //     provider: 'github', // 'github' or 'gitlab'
+  //     owner: 'ten-druhy',
+  //     repo: 'vytisknemto',
+  //     branch: 'dev'
+  //   }
+  // }
 })
